@@ -88,8 +88,8 @@ class CheckSlots:
         time.sleep(animation['pre_middle_duration'])
         icon = pyautogui.locateOnScreen('Images\\citizenship.PNG', 5, grayscale=True, confidence=0.8)
         time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-        pyautogui.move(50, 50, duration=animation['middle_duration'])
+        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
+        pyautogui.move(50, 50, duration=animation['pre_middle_duration'])
         pyautogui.click()
 
         # scroll to option
@@ -100,7 +100,7 @@ class CheckSlots:
         time.sleep(animation['pre_middle_duration'])
         icon = pyautogui.locateOnScreen('Images\\citizenship_belarus.PNG', 5, grayscale=True, confidence=0.8)
         time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
         pyautogui.click()
 
         # -----------------------------------------------------------------------
@@ -129,8 +129,8 @@ class CheckSlots:
         time.sleep(animation['pre_middle_duration'])
         icon = pyautogui.locateOnScreen('Images\\choose_center.PNG', 5, grayscale=True, confidence=0.8)
         time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-        pyautogui.move(50, 50, duration=animation['middle_duration'])
+        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
+        pyautogui.move(50, 50, duration=animation['pre_middle_duration'])
         pyautogui.click()
 
         time.sleep(animation['pre_middle_duration'])
@@ -140,5 +140,5 @@ class CheckSlots:
         time.sleep(animation['pre_middle_duration'])
         icon = pyautogui.locateOnScreen('Images\\center_baranovichi.PNG', 5, grayscale=True, confidence=0.9)
         time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
         pyautogui.click()
