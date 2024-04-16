@@ -37,10 +37,8 @@ while True:
 
     if code in ['begin', 'login', 'check_slots']:
         time.sleep(animation['short_sleep'])
-
-        for i in range(0, 15):
-            checker = CheckSlots()
-            checker.process()
+        checker = CheckSlots()
+        checker.process()
 
         # refresh page
         pyautogui.moveTo(*coordinates["refresh_button"], animation["middle_duration"], animation["animation"])
