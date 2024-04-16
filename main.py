@@ -38,7 +38,7 @@ while True:
     if code in ['begin', 'login', 'check_slots']:
         time.sleep(animation['short_sleep'])
 
-        for i in range(0, 30):
+        for i in range(0, 15):
             checker = CheckSlots()
             checker.process()
 
