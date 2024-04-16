@@ -50,22 +50,6 @@ class CheckSlots:
         pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
         pyautogui.click()
 
-        # -----------------------------------------------------------------------
-        # ---------------------   choose subcategory ----------------------------
-        # -----------------------------------------------------------------------
-        time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\choose_subcategory.PNG', 5, grayscale=True, confidence=0.8)
-        time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-        pyautogui.move(50, 50, duration=animation['middle_duration'])
-        pyautogui.click()
-
-        # pick subcategory
-        time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\subcategory_visa_c.PNG', 5, grayscale=True, confidence=0.8)
-        time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-        pyautogui.click()
 
         # -----------------------------------------------------------------------
         # ---------------------   choose birthdate ------------------------------
@@ -103,42 +87,44 @@ class CheckSlots:
         pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
         pyautogui.click()
 
-        # -----------------------------------------------------------------------
-        # ---------------------   check if warning here -------------------------
-        # -----------------------------------------------------------------------
-        try:
+        for i in range(0,15):
+            # -----------------------------------------------------------------------
+            # ---------------------   choose subcategory ----------------------------
+            # -----------------------------------------------------------------------
             time.sleep(animation['pre_middle_duration'])
-            pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
+            icon = pyautogui.locateOnScreen('Images\\choose_subcategory.PNG', 5, grayscale=True, confidence=0.8)
             time.sleep(animation['fast_duration'])
-            # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-        except:
-            print('SORRY NOT FOUND, SO SLOTS AVAILABLE')
-            for i in range(0, 3):
-                winsound.Beep(400, 800)
-                time.sleep(0.2)
-            pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
+            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+            pyautogui.move(50, 50, duration=animation['middle_duration'])
+            pyautogui.click()
 
-        # -----------------------------------------------------------------------
-        # ---------------------  restart settings  ------------------------------
-        # -----------------------------------------------------------------------
+            image = 'Images\\subcategory_visa_c.PNG'
+            # change subcategory to other visits
+            if i % 2 == 1:
+                image = 'Images\\subcategory_visa_other_c.PNG'
+                time.sleep(animation['long_sleep'])
 
-        # scroll to begin of the page
-        pyautogui.scroll(1000)
+            # pick subcategory
+            time.sleep(animation['pre_middle_duration'])
+            icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.8)
+            time.sleep(animation['fast_duration'])
+            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+            pyautogui.click()
 
-        # choose center
-        time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\choose_center.PNG', 5, grayscale=True, confidence=0.8)
-        time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
-        pyautogui.move(50, 50, duration=animation['pre_middle_duration'])
-        pyautogui.click()
+            # -----------------------------------------------------------------------
+            # ---------------------   check if warning here -------------------------
+            # -----------------------------------------------------------------------
+            try:
+                time.sleep(animation['pre_middle_duration'])
+                pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
+                time.sleep(animation['fast_duration'])
+                # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+            except:
+                print('SORRY NOT FOUND, SO SLOTS AVAILABLE')
+                for i in range(0, 3):
+                    winsound.Beep(400, 800)
+                    time.sleep(0.2)
+                pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
 
-        time.sleep(animation['pre_middle_duration'])
-        pyautogui.scroll(300)
 
-        # pick first option
-        time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\center_baranovichi.PNG', 5, grayscale=True, confidence=0.9)
-        time.sleep(animation['fast_duration'])
-        pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
-        pyautogui.click()
+
