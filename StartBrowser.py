@@ -15,6 +15,7 @@ class StartBrowser:
         # ---------------------   Start browser   -------------------------------
         # -----------------------------------------------------------------------
         # open browser
+        time.sleep(animation['fast_duration'])
         pyautogui.click(coordinates["browser"])
         time.sleep(animation['fast_duration'])
 
@@ -42,12 +43,14 @@ class StartBrowser:
         # ---------------------   IS HUMAN CHECK  -------------------------------
         # -----------------------------------------------------------------------
         try:
-            pyautogui.locateOnScreen(settings['login_not_robot'], 5, confidence=0.9, grayscale=True)
+            icon = pyautogui.locateOnScreen(settings['login_not_robot'], 5, confidence=0.9, grayscale=True)
             for i in range(0, 3):
                 winsound.Beep(200, 1000)
                 time.sleep(0.2)
 
-            pyautogui.alert(text='LOGIN TO VFS ASKS FOR NO ROBOT APPROVAL', title='YOU HAVE 30 SEC', button='OK')
-            time.sleep(30)
+            pyautogui.moveTo(*coordinates["login_checkbox"], animation["middle_duration"], animation["animation"])
+            pyautogui.click()
+            # pyautogui.alert(text='LOGIN TO VFS ASKS FOR NO ROBOT APPROVAL', title='YOU HAVE 30 SEC', button='OK')
+            time.sleep(animation['short_sleep'])
         except:
             print('no robot check in vfs login')
