@@ -3,15 +3,17 @@ import time
 import random
 import winsound
 from Settings.Options import *
-
+from Logger import Logger
 
 class CheckSlots:
 
     def __init__(self):
-        print("Initializing CheckSlots...")
+        self.logger = Logger()
 
 
     def process(self):
+
+        self.logger.log('Checking slots started')
         # -----------------------------------------------------------------------
         # ---------------------   choose center   -------------------------------
         # -----------------------------------------------------------------------
@@ -89,15 +91,16 @@ class CheckSlots:
         pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
         pyautogui.click()
 
-        for i in range(0,100):
+
+        for i in range(0, 14):
             # -----------------------------------------------------------------------
             # ---------------------   choose subcategory ----------------------------
             # -----------------------------------------------------------------------
-            time.sleep(animation['pre_middle_duration'])
+            time.sleep(animation['middle_duration'])
             icon = pyautogui.locateOnScreen('Images\\choose_subcategory.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
+            time.sleep(animation['middle_duration'])
             pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
+            pyautogui.move(random.randint(-50, 50), 50, duration=animation['slow_duration'])
             pyautogui.click()
 
             image = 'Images\\subcategory_visa_c.PNG'
@@ -106,20 +109,22 @@ class CheckSlots:
                 image = 'Images\\subcategory_visa_other_c.PNG'
 
             # pick subcategory
-            time.sleep(animation['pre_middle_duration'])
+            time.sleep(animation['slow_duration'])
             icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
+            time.sleep(animation['slow_duration'])
             pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
             pyautogui.click()
+
+            self.logger.log(f"{i} - iteration completed...")
             print(f"{i} - iteration")
 
             # -----------------------------------------------------------------------
             # ---------------------   check if warning here -------------------------
             # -----------------------------------------------------------------------
             try:
-                time.sleep(animation['pre_middle_duration'])
-                pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
                 time.sleep(animation['fast_duration'])
+                pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
+                time.sleep(animation['slow_duration'])
                 # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
             except:
                 print('SORRY NOT FOUND, SO SLOTS AVAILABLE')
@@ -128,5 +133,6 @@ class CheckSlots:
                     time.sleep(0.2)
                 pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
 
-            time.sleep(random.randint(animation['short_sleep'],animation['XL_sleep']))
+            time.sleep(random.randint(55,65))
 
+        pyautogui.hotkey('alt', 'f4')
