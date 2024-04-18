@@ -3,21 +3,22 @@ import time
 import random
 import winsound
 from Settings.Options import *
-
+from Logger import Logger
 
 class StartBrowser:
 
     def __init__(self):
-        print("StartBrowser")
+        self.logger = Logger()
 
     def process(self):
+        self.logger.log("Processing open browser...")
         # -----------------------------------------------------------------------
         # ---------------------   Start browser   -------------------------------
         # -----------------------------------------------------------------------
         # open browser
         time.sleep(animation['fast_duration'])
         pyautogui.click(coordinates["browser"])
-        time.sleep(animation['fast_duration'])
+        time.sleep(animation['slow_duration'])
 
         # resize browser
         pyautogui.hotkey('win', 'up')
@@ -42,15 +43,16 @@ class StartBrowser:
         # -----------------------------------------------------------------------
         # ---------------------   IS HUMAN CHECK  -------------------------------
         # -----------------------------------------------------------------------
-        try:
-            icon = pyautogui.locateOnScreen(settings['login_not_robot'], 5, confidence=0.9, grayscale=True)
-            for i in range(0, 3):
-                winsound.Beep(200, 1000)
-                time.sleep(0.2)
+        # try:
+        #     icon = pyautogui.locateOnScreen(settings['login_not_robot'], 5, confidence=0.9, grayscale=True)
+        #     for i in range(0, 3):
+        #         winsound.Beep(200, 1000)
+        #         time.sleep(0.2)
+        #
+        #     pyautogui.moveTo(*coordinates["login_checkbox"], animation["middle_duration"], animation["animation"])
+        #     pyautogui.click()
+        #     time.sleep(animation['short_sleep'])
+        # except:
+        #     print('no robot check in vfs login')
 
-            pyautogui.moveTo(*coordinates["login_checkbox"], animation["middle_duration"], animation["animation"])
-            pyautogui.click()
-            # pyautogui.alert(text='LOGIN TO VFS ASKS FOR NO ROBOT APPROVAL', title='YOU HAVE 30 SEC', button='OK')
-            time.sleep(animation['short_sleep'])
-        except:
-            print('no robot check in vfs login')
+
