@@ -3,14 +3,21 @@ import time
 import winsound
 from KeyboardResolver import Resolver
 from Settings.Options import coordinates, animation, credentials
-
+from Logger import Logger
 
 class Login:
 
     def __init__(self):
-        print('login ready')
+        self.logger = Logger()
 
     def process(self):
+        self.logger.log('Login started')
+
+        # is human check
+        pyautogui.moveTo(*coordinates["login_checkbox"], animation["middle_duration"], animation["animation"])
+        pyautogui.click()
+        time.sleep(animation['short_sleep'])
+
         # input email during login
         pyautogui.moveTo(*coordinates['email_input'], animation['middle_duration'], animation['animation'])
         pyautogui.tripleClick()
