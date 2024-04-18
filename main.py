@@ -9,7 +9,7 @@ from ApprovalLogin import ApprovalLogin
 from CheckSlots import CheckSlots
 from StartBrowser import StartBrowser
 from LoginProcess import LoginProcess
-
+from Logger import Logger
 
 code = 'begin'
 code = pyautogui.confirm(
@@ -41,6 +41,10 @@ while True:
         checker.process()
 
         # refresh page
-        pyautogui.moveTo(*coordinates["refresh_button"], animation["middle_duration"], animation["animation"])
-        pyautogui.click()
-        code = 'login'
+        # pyautogui.moveTo(*coordinates["refresh_button"], animation["middle_duration"], animation["animation"])
+        # pyautogui.click()
+        code = 'begin'
+        logger = Logger()
+        logger.log("Processing over. Sleeping for 10 minutes ...")
+        time.sleep(600)
+        logger.log("Processing will be restarted now...")
