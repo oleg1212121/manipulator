@@ -6,12 +6,12 @@ from Login import Login
 from Settings.Options import *
 from MailReader import MailReader
 from ApprovalLogin import ApprovalLogin
-
+from Logger import Logger
 
 class LoginProcess:
 
     def __init__(self):
-        print('login process started')
+        self.logger = Logger()
 
     def process(self):
         time.sleep(animation["middle_duration"])
