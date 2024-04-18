@@ -3,15 +3,16 @@ import time
 import winsound
 from KeyboardResolver import Resolver
 from Settings.Options import coordinates, animation, approval_keyboard
-
+from Logger import Logger
 
 class ApprovalLogin:
 
 
     def __init__(self):
-        print('login ready')
+        self.logger = Logger()
 
     def process(self, numbers):
+        self.logger.log('Approval login started')
         # input email during login
         pyautogui.moveTo(*coordinates['approval_input'], animation['middle_duration'], animation['animation'])
         pyautogui.click()
@@ -28,6 +29,7 @@ class ApprovalLogin:
             pyautogui.moveTo(*approval_keyboard[symbol], animation['middle_duration'])
             pyautogui.click()
 
+        time.sleep(animation['middle_duration'])
         # input password during login
         pyautogui.moveTo(*coordinates['approval_submit'], animation['middle_duration'], animation['animation'])
         pyautogui.click()
