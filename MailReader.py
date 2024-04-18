@@ -3,27 +3,28 @@ import pyperclip
 import time
 import winsound
 from Settings.Options import coordinates, animation, settings
-
+from Logger import Logger
 
 class MailReader:
 
     def __init__(self):
-        print('mail reader ready')
+        self.logger = Logger()
 
     def process(self):
 
+        self.logger.log('Mail reader started')
         # open browser
         pyautogui.click(coordinates["browser"])
-        time.sleep(animation['middle_duration'])
+        time.sleep(animation['slow_duration'])
 
         # resize browser
         pyautogui.hotkey('win', 'up')
         time.sleep(animation['fast_duration'])
 
         # open mailbox
-        pyautogui.moveTo(*coordinates["mailbox"], animation["middle_duration"])
+        pyautogui.moveTo(*coordinates["mailbox"], animation["slow_duration"])
         pyautogui.click()
-
+        time.sleep(animation['slow_duration'])
         # check if no robot icon there
         try:
             pyautogui.locateOnScreen(settings['email_not_robot'], 5, confidence=0.9, grayscale=True)
