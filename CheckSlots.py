@@ -3,6 +3,7 @@ import time
 import random
 import winsound
 from Settings.Options import *
+from Settings.Credentials import credentials
 from Logger import Logger
 
 class CheckSlots:
@@ -133,6 +134,6 @@ class CheckSlots:
                     time.sleep(0.2)
                 pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
 
-            time.sleep(random.randint(55,65))
+            time.sleep(random.randint(60,65))
 
         pyautogui.hotkey('alt', 'f4')

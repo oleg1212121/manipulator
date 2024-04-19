@@ -2,7 +2,8 @@ import pyautogui
 import time
 import winsound
 from KeyboardResolver import Resolver
-from Settings.Options import coordinates, animation, credentials
+from Settings.Options import coordinates, animation
+from Settings.Credentials import credentials
 from Logger import Logger
 
 class Login:
