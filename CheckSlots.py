@@ -14,8 +14,9 @@ class CheckSlots:
 
     def process(self):
 
-        for i in range(0, 10):
+        for i in range(0, 12):
             self.logger.log('Checking slots started')
+            pyautogui.scroll(800)
             # -----------------------------------------------------------------------
             # ---------------------   choose center   -------------------------------
             # -----------------------------------------------------------------------
@@ -64,14 +65,14 @@ class CheckSlots:
             # -----------------------------------------------------------------------
             # ---------------------   choose birthdate ------------------------------
             # -----------------------------------------------------------------------
-            # time.sleep(animation['pre_middle_duration'])
-            # icon = pyautogui.locateOnScreen('Images\\birthday.PNG', 5, grayscale=True, confidence=0.8)
-            # time.sleep(animation['fast_duration'])
-            # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            # pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
-            # pyautogui.tripleClick()
-            # pyautogui.press('delete')
-            # pyautogui.write(credentials["birthday"], 0.1)
+            time.sleep(animation['pre_middle_duration'])
+            icon = pyautogui.locateOnScreen('Images\\birthday.PNG', 5, grayscale=True, confidence=0.8)
+            time.sleep(animation['fast_duration'])
+            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
+            pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
+            pyautogui.tripleClick()
+            pyautogui.press('delete')
+            pyautogui.write(credentials["birthday"], 0.1)
 
             # scroll to end of page
             pyautogui.scroll(-300)
@@ -139,7 +140,10 @@ class CheckSlots:
                     time.sleep(0.2)
                 pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
 
-            time.sleep(random.randint(60,65))
-            pyautogui.scroll(800)
+            for i in range(0, 22):
+                x, y = random.randint(200, 1800), random.randint(200, 1000)
+                pyautogui.moveTo(x, y, animation['middle_duration'], animation['animation'])
+            time.sleep(random.randint(30,42))
+
 
         pyautogui.hotkey('alt', 'f4')
