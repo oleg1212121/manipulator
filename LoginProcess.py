@@ -14,7 +14,7 @@ class LoginProcess:
         self.logger = Logger()
 
     def process(self):
-        time.sleep(animation["middle_duration"])
+        time.sleep(animation['middle_sleep'])
         # -----------------------------------------------------------------------
         # ---------------------     LOGIN         -------------------------------
         # -----------------------------------------------------------------------
