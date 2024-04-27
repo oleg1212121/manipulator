@@ -11,6 +11,7 @@ class StartBrowser:
         self.logger = Logger()
 
     def process(self):
+        time.sleep(animation['short_sleep'])
         self.logger.log("Processing open browser...")
         # -----------------------------------------------------------------------
         # ---------------------   Start browser   -------------------------------
