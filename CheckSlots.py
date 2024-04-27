@@ -5,6 +5,8 @@ import winsound
 from Settings.Options import *
 from Settings.Credentials import credentials
 from Logger import Logger
+from CheckSlotScenaries.MinskShenghenCOtherScenario import MinskShenghenCOtherScenario
+from CheckSlotScenaries.GrodnoShenghenCOtherScenario import GrodnoShenghenCOtherScenario
 
 class CheckSlots:
 
@@ -13,123 +15,37 @@ class CheckSlots:
 
 
     def process(self):
-
+        time.sleep(animation['short_sleep'])
+        self.logger.log('Checking slots started')
+        arr = [
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+            MinskShenghenCOtherScenario(),
+            GrodnoShenghenCOtherScenario(),
+        ]
         for i in range(0, 12):
-            self.logger.log('Checking slots started')
-            pyautogui.scroll(800)
-            # -----------------------------------------------------------------------
-            # ---------------------   choose center   -------------------------------
-            # -----------------------------------------------------------------------
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\choose_center.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.click()
-            time.sleep(animation['fast_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
-            pyautogui.click()
-
-            # scroll to option
-            time.sleep(animation['pre_middle_duration'])
-            pyautogui.scroll(-200)
-
-            image = 'Images\\minsk_center.PNG'
-            # change subcategory to other visits
-            if i % 2 == 1:
-                image = 'Images\\center_grodno.PNG'
-            # pick option
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.9)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.click()
-
-            # -----------------------------------------------------------------------
-            # ---------------------   choose category -------------------------------
-            # -----------------------------------------------------------------------
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\choose_category.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
-            pyautogui.click()
-
-            # pick category
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\category_visa_c.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.click()
-
-
-            # -----------------------------------------------------------------------
-            # ---------------------   choose birthdate ------------------------------
-            # -----------------------------------------------------------------------
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\birthday.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['middle_duration'])
-            pyautogui.tripleClick()
-            pyautogui.press('delete')
-            pyautogui.write(credentials["birthday"], 0.1)
-
-            # scroll to end of page
-            pyautogui.scroll(-300)
-
-            # -----------------------------------------------------------------------
-            # ---------------------   choose citizenship ----------------------------
-            # -----------------------------------------------------------------------
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\citizenship.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['pre_middle_duration'])
-            pyautogui.click()
-
-            # scroll to option
-            time.sleep(animation['fast_duration'])
-            pyautogui.scroll(-800)
-
-            # pick option
-            time.sleep(animation['pre_middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\citizenship_belarus.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['fast_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
-            pyautogui.click()
-
-
-        # for i in range(0, 14):
-            # -----------------------------------------------------------------------
-            # ---------------------   choose subcategory ----------------------------
-            # -----------------------------------------------------------------------
-            time.sleep(animation['middle_duration'])
-            icon = pyautogui.locateOnScreen('Images\\choose_subcategory.PNG', 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['middle_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.move(random.randint(-50, 50), 50, duration=animation['slow_duration'])
-            pyautogui.click()
-
-            image = 'Images\\subcategory_visa_other_c.PNG'
-            # change subcategory to other visits
-            # if i % 2 == 1:
-            #     image = 'Images\\subcategory_visa_c.PNG'
-
-            # pick subcategory
-            time.sleep(animation['slow_duration'])
-            icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.8)
-            time.sleep(animation['slow_duration'])
-            pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
-            pyautogui.click()
 
             self.logger.log(f"{i} - iteration completed...")
             print(f"{i} - iteration")
-
+            try:
+                arr[i].process()
+            except:
+                pyautogui.alert(text='CHECK SLOT FAILED', title='FAIL', button='OK')
             # -----------------------------------------------------------------------
             # ---------------------   check if warning here -------------------------
             # -----------------------------------------------------------------------
+            pyautogui.sleep(animation['fast_duration'])
+            pyautogui.scroll(-1000)
             try:
-                time.sleep(animation['fast_duration'])
+                time.sleep(animation['middle_duration'])
                 pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
                 time.sleep(animation['slow_duration'])
                 # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
@@ -143,7 +59,7 @@ class CheckSlots:
             for i in range(0, 22):
                 x, y = random.randint(200, 1800), random.randint(200, 1000)
                 pyautogui.moveTo(x, y, animation['middle_duration'], animation['animation'])
-            time.sleep(random.randint(30,42))
+            time.sleep(random.randint(30, 42))
 
 
-        pyautogui.hotkey('alt', 'f4')
+
