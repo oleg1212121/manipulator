@@ -11,40 +11,48 @@ from StartBrowser import StartBrowser
 from LoginProcess import LoginProcess
 from Logger import Logger
 
-code = 'begin'
 code = pyautogui.confirm(
     text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
     title='Which step?',
-    buttons=['begin', 'login', "check_slots"]
+    buttons=['begin', 'login', "check_slots", "pause", "sleep"]
 )
 
 while True:
     if code == 'begin':
-        time.sleep(animation['short_sleep'])
-
-        # start browser
-        begin = StartBrowser()
-        begin.process()
-        code = 'login'
+        try:
+            begin = StartBrowser()
+            begin.process()
+            code = 'login'
+        except:
+            code = 'pause'
 
     if code in ['begin', 'login']:
-        time.sleep(animation['middle_sleep'])
-
-        # full login process
-        login = LoginProcess()
-        login.process()
-        code = 'check_slots'
+        try:
+            login = LoginProcess()
+            login.process()
+            code = 'check_slots'
+        except:
+            code = 'sleep'
 
     if code in ['begin', 'login', 'check_slots']:
-        time.sleep(animation['short_sleep'])
-        checker = CheckSlots()
-        checker.process()
+        try:
+            checker = CheckSlots()
+            checker.process()
+            code = 'pause'
+        except:
+            code = 'pause'
 
-        # refresh page
-        # pyautogui.moveTo(*coordinates["refresh_button"], animation["middle_duration"], animation["animation"])
-        # pyautogui.click()
-        code = 'begin'
+    if code in ["pause", 'begin', 'login', 'check_slots']:
+        pyautogui.hotkey('alt', 'f4')
         logger = Logger()
-        logger.log("Processing over. Sleeping for 10 minutes ...")
+        logger.log("Sleeping for 10 minutes ...")
         time.sleep(900)
         logger.log("Processing will be restarted now...")
+        code = 'begin'
+
+    if code in ["sleep"]:
+        pyautogui.hotkey('alt', 'f4')
+        logger = Logger()
+        logger.log("Sleep 1 hour ...")
+        time.sleep(3780)
+        code = 'begin'
