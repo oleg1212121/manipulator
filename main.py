@@ -46,5 +46,5 @@ while True:
         code = 'begin'
         logger = Logger()
         logger.log("Processing over. Sleeping for 10 minutes ...")
-        time.sleep(600)
+        time.sleep(900)
         logger.log("Processing will be restarted now...")
