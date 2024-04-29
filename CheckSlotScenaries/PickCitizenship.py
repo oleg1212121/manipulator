@@ -27,13 +27,14 @@ class PickCitizenship:
         time.sleep(animation['pre_middle_duration'])
         pyautogui.move(random.randint(-50, 50), 50, duration=animation['pre_middle_duration'])
         pyautogui.click()
+        pyautogui.move(random.randint(-50, 50), 50, duration=animation['pre_middle_duration'])
 
         time.sleep(animation['fast_duration'])
         pyautogui.scroll(3000)
 
         for i in range(20):
             try:
-                time.sleep(animation['pre_middle_duration'])
+                time.sleep(animation['fast_duration'])
                 icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.8)
                 time.sleep(animation['fast_duration'])
                 pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
