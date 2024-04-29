@@ -24,7 +24,12 @@ while True:
             begin.process()
             code = 'login'
         except:
-            code = 'pause'
+            code = pyautogui.confirm(
+                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
+                title='Which step?',
+                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
+            )
+            # code = 'pause'
 
     if code in ['begin', 'login']:
         try:
@@ -32,7 +37,12 @@ while True:
             login.process()
             code = 'check_slots'
         except:
-            code = 'sleep'
+            code = pyautogui.confirm(
+                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
+                title='Which step?',
+                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
+            )
+            # code = 'sleep'
 
     if code in ['begin', 'login', 'check_slots']:
         try:
@@ -40,13 +50,18 @@ while True:
             checker.process()
             code = 'pause'
         except:
-            code = 'pause'
+            code = pyautogui.confirm(
+                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
+                title='Which step?',
+                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
+            )
+            # code = 'pause'
 
     if code in ["pause", 'begin', 'login', 'check_slots']:
         pyautogui.hotkey('alt', 'f4')
         logger = Logger()
-        logger.log("Sleeping for 10 minutes ...")
-        time.sleep(900)
+        logger.log("Paused for some minutes ...")
+        time.sleep(700)
         logger.log("Processing will be restarted now...")
         code = 'begin'
 
