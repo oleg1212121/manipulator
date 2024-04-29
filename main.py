@@ -44,7 +44,7 @@ while True:
         pyautogui.hotkey('alt', 'f4')
         logger = Logger()
         logger.log("Paused for some minutes ...")
-        time.sleep(700)
+        time.sleep(650)
         logger.log("Processing will be restarted now...")
         code = 'begin'
 

@@ -19,9 +19,9 @@ class PickCitizenship:
         # -----------------------------------------------------------------------
         # ---------------------   choose citizenship ----------------------------
         # -----------------------------------------------------------------------
-        time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\citizenship.PNG', 5, grayscale=True, confidence=0.8)
-        time.sleep(animation['fast_duration'])
+        time.sleep(animation['middle_duration'])
+        icon = pyautogui.locateOnScreen('Images\\citizenship.PNG', 5, grayscale=True, confidence=0.9)
+        time.sleep(animation['middle_duration'])
         pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
         pyautogui.click()
         time.sleep(animation['pre_middle_duration'])
@@ -35,8 +35,8 @@ class PickCitizenship:
         for i in range(20):
             try:
                 time.sleep(animation['fast_duration'])
-                icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.8)
-                time.sleep(animation['fast_duration'])
+                icon = pyautogui.locateOnScreen(image, 5, grayscale=True, confidence=0.9)
+                time.sleep(animation['middle_duration'])
                 pyautogui.moveTo(*pyautogui.center(icon), duration=animation['pre_middle_duration'])
                 pyautogui.click()
                 break

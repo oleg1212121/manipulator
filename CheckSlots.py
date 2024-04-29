@@ -37,7 +37,7 @@ class CheckSlots:
             minsk_other_c,
             grodno_other_c,
         ]
-        for i in range(0, 10):
+        for i in range(0, 9):
 
             self.logger.log(f"{i} - iteration completed...")
             print(f"{i} - iteration")
@@ -63,7 +63,7 @@ class CheckSlots:
             for i in range(0, 30):
                 x, y = random.randint(200, 1800), random.randint(200, 1000)
                 pyautogui.moveTo(x, y, animation['middle_duration'], animation['animation'])
-            time.sleep(random.randint(15, 20))
+            time.sleep(random.randint(15, 25))
 
 
 
