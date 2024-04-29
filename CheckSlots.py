@@ -31,7 +31,7 @@ class CheckSlots:
             MinskShenghenCOtherScenario(),
             GrodnoShenghenCOtherScenario(),
         ]
-        for i in range(0, 12):
+        for i in range(0, 10):
 
             self.logger.log(f"{i} - iteration completed...")
             print(f"{i} - iteration")
@@ -47,7 +47,7 @@ class CheckSlots:
             try:
                 time.sleep(animation['middle_duration'])
                 pyautogui.locateOnScreen('Images\\sorry_notice.PNG', 5, grayscale=True, confidence=0.8)
-                time.sleep(animation['slow_duration'])
+                time.sleep(animation['middle_duration'])
                 # pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
             except:
                 print('SORRY NOT FOUND, SO SLOTS AVAILABLE')
@@ -56,10 +56,10 @@ class CheckSlots:
                     time.sleep(0.2)
                 pyautogui.alert(text='AVAILABLE DATES!!!', title='SUCCESS', button='OK')
 
-            for i in range(0, 22):
+            for i in range(0, 30):
                 x, y = random.randint(200, 1800), random.randint(200, 1000)
                 pyautogui.moveTo(x, y, animation['middle_duration'], animation['animation'])
-            time.sleep(random.randint(30, 42))
+            time.sleep(random.randint(15, 25))
 
 
 
