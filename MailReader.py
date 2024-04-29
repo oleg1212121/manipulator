@@ -19,7 +19,7 @@ class MailReader:
 
         # resize browser
         pyautogui.hotkey('win', 'up')
-        time.sleep(animation['fast_duration'])
+        time.sleep(animation['slow_duration'])
 
         # open mailbox
         pyautogui.moveTo(*coordinates["mailbox"], animation["slow_duration"])
