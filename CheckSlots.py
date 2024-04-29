@@ -6,6 +6,7 @@ from Settings.Options import *
 from Settings.Credentials import credentials
 from Logger import Logger
 from CheckSlotScenaries.MinskShenghenCOtherScenario import MinskShenghenCOtherScenario
+from CheckSlotScenaries.MinskShenghenCVisitsScenario import MinskShenghenCVisitsScenario
 from CheckSlotScenaries.GrodnoShenghenCOtherScenario import GrodnoShenghenCOtherScenario
 
 class CheckSlots:
@@ -17,19 +18,25 @@ class CheckSlots:
     def process(self):
         time.sleep(animation['short_sleep'])
         self.logger.log('Checking slots started')
+        minsk_visits_c = MinskShenghenCVisitsScenario()
+        minsk_other_c = MinskShenghenCOtherScenario()
+        grodno_other_c = GrodnoShenghenCOtherScenario()
         arr = [
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
-            MinskShenghenCOtherScenario(),
-            GrodnoShenghenCOtherScenario(),
+            minsk_visits_c,
+            minsk_other_c,
+            minsk_visits_c,
+            minsk_other_c,
+            grodno_other_c,
+            minsk_visits_c,
+            minsk_other_c,
+            minsk_visits_c,
+            minsk_other_c,
+            grodno_other_c,
+            minsk_visits_c,
+            minsk_other_c,
+            minsk_visits_c,
+            minsk_other_c,
+            grodno_other_c,
         ]
         for i in range(0, 10):
 
