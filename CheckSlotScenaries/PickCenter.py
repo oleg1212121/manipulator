@@ -20,7 +20,7 @@ class PickCenter:
         # ---------------------   choose center   -------------------------------
         # -----------------------------------------------------------------------
         time.sleep(animation['pre_middle_duration'])
-        icon = pyautogui.locateOnScreen('Images\\choose_center.PNG', 5, grayscale=True, confidence=0.8)
+        icon = pyautogui.locateOnScreen('Images\\choose_center.PNG', 5, grayscale=True, confidence=0.9)
         time.sleep(animation['fast_duration'])
         pyautogui.moveTo(*pyautogui.center(icon), duration=animation['slow_duration'])
         pyautogui.click()
