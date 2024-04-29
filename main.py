@@ -10,12 +10,10 @@ from CheckSlots import CheckSlots
 from StartBrowser import StartBrowser
 from LoginProcess import LoginProcess
 from Logger import Logger
+from ProcessConfirmation import ProcessConfirmation
 
-code = pyautogui.confirm(
-    text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
-    title='Which step?',
-    buttons=['begin', 'login', "check_slots", "pause", "sleep"]
-)
+confirmation = ProcessConfirmation()
+code = confirmation.process()
 
 while True:
     if code == 'begin':
@@ -24,12 +22,7 @@ while True:
             begin.process()
             code = 'login'
         except:
-            code = pyautogui.confirm(
-                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
-                title='Which step?',
-                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
-            )
-            # code = 'pause'
+            code = confirmation.process(title='START BROWSER WENT WRONG')
 
     if code in ['begin', 'login']:
         try:
@@ -37,12 +30,7 @@ while True:
             login.process()
             code = 'check_slots'
         except:
-            code = pyautogui.confirm(
-                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
-                title='Which step?',
-                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
-            )
-            # code = 'sleep'
+            code = confirmation.process(title='LOGIN WENT WRONG')
 
     if code in ['begin', 'login', 'check_slots']:
         try:
@@ -50,12 +38,7 @@ while True:
             checker.process()
             code = 'pause'
         except:
-            code = pyautogui.confirm(
-                text=' BEGIN - full program\n LOGIN - starts from login menu\n CHECK_SLOTS - only change selected visa type',
-                title='Which step?',
-                buttons=['begin', 'login', "check_slots", "pause", "sleep"]
-            )
-            # code = 'pause'
+            code = confirmation.process(title='CHECKING SLOTS WENT WRONG')
 
     if code in ["pause", 'begin', 'login', 'check_slots']:
         pyautogui.hotkey('alt', 'f4')
