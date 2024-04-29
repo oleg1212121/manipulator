@@ -6,7 +6,8 @@ from Settings.Options import *
 from Settings.Credentials import credentials
 from Logger import Logger
 
-class CheckSlots:
+
+class ProcessConfirmation:
 
     def __init__(self):
         self.logger = Logger()
