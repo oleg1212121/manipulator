@@ -8,6 +8,9 @@ from Logger import Logger
 from CheckSlotScenaries.MinskShenghenCOtherScenario import MinskShenghenCOtherScenario
 from CheckSlotScenaries.MinskShenghenCVisitsScenario import MinskShenghenCVisitsScenario
 from CheckSlotScenaries.GrodnoShenghenCOtherScenario import GrodnoShenghenCOtherScenario
+from CheckSlotScenaries.MinskShenghenDOtherScenario import MinskShenghenDOtherScenario
+from CheckSlotScenaries.MinskShenghenDPostalScenario import MinskShenghenDPostalScenario
+
 
 class CheckSlots:
 
@@ -19,23 +22,22 @@ class CheckSlots:
         self.logger.log('Checking slots started')
         minsk_visits_c = MinskShenghenCVisitsScenario()
         minsk_other_c = MinskShenghenCOtherScenario()
+        minsk_other_d = MinskShenghenDOtherScenario()
+        minsk_postal_d = MinskShenghenDPostalScenario()
         grodno_other_c = GrodnoShenghenCOtherScenario()
         arr = [
-            minsk_visits_c,
             minsk_other_c,
-            minsk_visits_c,
-            minsk_other_c,
+            minsk_other_d,
+            minsk_postal_d,
             grodno_other_c,
-            minsk_visits_c,
             minsk_other_c,
-            minsk_visits_c,
-            minsk_other_c,
+            minsk_other_d,
+            minsk_postal_d,
             grodno_other_c,
-            minsk_visits_c,
             minsk_other_c,
-            minsk_visits_c,
-            minsk_other_c,
-            grodno_other_c,
+            minsk_other_d,
+            minsk_postal_d,
+            grodno_other_c
         ]
         for i in range(0, 9):
 
