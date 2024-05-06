@@ -13,6 +13,12 @@ class ApprovalLogin:
 
     def process(self, numbers):
         self.logger.log('Approval login started')
+
+        # checkbox click
+        time.sleep(animation['middle_duration'])
+        pyautogui.moveTo(*coordinates['approval_checkbox'], animation['middle_duration'], animation['animation'])
+        pyautogui.click()
+        
         # input email during login
         pyautogui.moveTo(*coordinates['approval_input'], animation['middle_duration'], animation['animation'])
         pyautogui.click()
