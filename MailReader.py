@@ -26,18 +26,10 @@ class MailReader:
         pyautogui.click()
         time.sleep(animation['slow_duration'])
         # check if no robot icon there
-        try:
-            pyautogui.locateOnScreen(settings['email_not_robot'], 5, confidence=0.9, grayscale=True)
-            winsound.Beep(200, 1000)
-            time.sleep(0.2)
-            winsound.Beep(200, 1000)
-            time.sleep(0.2)
-            winsound.Beep(200, 1000)
-            pyautogui.alert(text='MAILBOX ASKS FOR NO ROBOT APPROVAL', title='YOU HAVE 30 SEC', button='OK')
-            time.sleep(30)
-        except:
-            print('no robot check in email')
 
+        # click potential robot-checkbox
+        pyautogui.moveTo(840, 621, animation["slow_duration"])
+        pyautogui.click()
 
         # open recent email
         pyautogui.moveTo(*coordinates["email"], animation["slow_duration"])
