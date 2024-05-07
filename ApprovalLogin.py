@@ -5,8 +5,8 @@ from KeyboardResolver import Resolver
 from Settings.Options import coordinates, animation, approval_keyboard
 from Logger import Logger
 
-class ApprovalLogin:
 
+class ApprovalLogin:
 
     def __init__(self):
         self.logger = Logger()
@@ -31,9 +31,12 @@ class ApprovalLogin:
             pyautogui.click()
             time.sleep(animation['fast_duration'])
 
-        for symbol in numbers:
-            pyautogui.moveTo(*approval_keyboard[symbol], animation['middle_duration'])
-            pyautogui.click()
+        if numbers and len(numbers) == 6:
+            for symbol in numbers:
+                pyautogui.moveTo(*approval_keyboard[symbol], animation['middle_duration'])
+                pyautogui.click()
+        else:
+            pyautogui.alert('Missed approval CODE')
 
         time.sleep(animation['middle_duration'])
         # input password during login
