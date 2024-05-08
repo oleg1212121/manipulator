@@ -37,7 +37,7 @@ class StartBrowser:
             pyautogui.write(link)
             time.sleep(animation['pre_middle_duration'])
             pyautogui.press("enter")
-            self.filler.shake(4)
+            self.filler.activity(4)
 
         time.sleep(animation['middle_sleep'])
 
