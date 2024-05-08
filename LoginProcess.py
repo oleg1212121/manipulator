@@ -8,6 +8,7 @@ from MailReader import MailReader
 from ApprovalLogin import ApprovalLogin
 from Logger import Logger
 
+
 class LoginProcess:
 
     def __init__(self):
