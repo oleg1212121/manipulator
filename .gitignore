@@ -1,3 +1,8 @@
 /Settings/Credentials/*
 .idea
 __pycache__/
+/SELENIUM_EXAMPLES/*
+log.txt
+token.json
+/downloaded_files/*
+gmail-credentials.json
