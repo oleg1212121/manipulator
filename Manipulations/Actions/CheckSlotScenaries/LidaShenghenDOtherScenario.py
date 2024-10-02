@@ -1,18 +1,12 @@
-import pyautogui
-import time
-import random
-import winsound
+from Manipulations.Logger.Logger import Logger
+from Manipulations.Actions.CheckSlotScenaries.PickCenter import PickCenter
+from Manipulations.Actions.CheckSlotScenaries.PickCategory import PickCategory
+from Manipulations.Actions.CheckSlotScenaries.PickSubCategory import PickSubCategory
+from Manipulations.Actions.CheckSlotScenaries.PickBirthDate import PickBirthDate
+from Manipulations.Actions.CheckSlotScenaries.PickCitizenship import PickCitizenship
 
-from Settings.Options import *
-from Settings.Credentials import credentials
-from Logger import Logger
-from CheckSlotScenaries.PickCenter import PickCenter
-from CheckSlotScenaries.PickCategory import PickCategory
-from CheckSlotScenaries.PickSubCategory import PickSubCategory
-from CheckSlotScenaries.PickBirthDate import PickBirthDate
-from CheckSlotScenaries.PickCitizenship import PickCitizenship
 
-class GrodnoShenghenCOtherScenario:
+class LidaShenghenDOtherScenario:
 
     def __init__(self):
         self.logger = Logger()
@@ -22,13 +16,13 @@ class GrodnoShenghenCOtherScenario:
         # ---------------------   choose center   -------------------------------
         # -----------------------------------------------------------------------
         center = PickCenter()
-        center.process('Images\\center_grodno.PNG')
+        center.process('Images\\center_lida.PNG')
 
         # -----------------------------------------------------------------------
         # ---------------------   choose category -------------------------------
         # -----------------------------------------------------------------------
         category = PickCategory()
-        category.process('Images\\category_visa_c.PNG')
+        category.process('Images\\category_visa_d.PNG')
 
         # -----------------------------------------------------------------------
         # ---------------------   choose birthdate ------------------------------
@@ -46,7 +40,8 @@ class GrodnoShenghenCOtherScenario:
         # ---------------------   choose subcategory ----------------------------
         # -----------------------------------------------------------------------
         subcategory = PickSubCategory()
-        subcategory.process('Images\\subcategory_visa_other_c.PNG')
+        subcategory.process('Images\\subcategory_visa_other_d.PNG')
+
 
 
 

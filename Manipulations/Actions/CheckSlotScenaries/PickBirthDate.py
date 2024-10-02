@@ -1,10 +1,8 @@
-import pyautogui
 import time
 import random
-import winsound
-from Settings.Options import *
-from Settings.Credentials import credentials
-from Logger import Logger
+from Settings.Elements.settings import *
+from Settings.Credentials.credentials import credentials
+from Manipulations.Logger.Logger import Logger
 
 
 class PickBirthDate:

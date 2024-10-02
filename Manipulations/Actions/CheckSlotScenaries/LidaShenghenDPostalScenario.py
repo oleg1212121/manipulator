@@ -1,17 +1,12 @@
-import pyautogui
-import time
-import random
-import winsound
-from Settings.Options import *
-from Settings.Credentials import credentials
-from Logger import Logger
-from CheckSlotScenaries.PickCenter import PickCenter
-from CheckSlotScenaries.PickCategory import PickCategory
-from CheckSlotScenaries.PickSubCategory import PickSubCategory
-from CheckSlotScenaries.PickBirthDate import PickBirthDate
-from CheckSlotScenaries.PickCitizenship import PickCitizenship
+from Manipulations.Logger.Logger import Logger
+from Manipulations.Actions.CheckSlotScenaries.PickCenter import PickCenter
+from Manipulations.Actions.CheckSlotScenaries.PickCategory import PickCategory
+from Manipulations.Actions.CheckSlotScenaries.PickSubCategory import PickSubCategory
+from Manipulations.Actions.CheckSlotScenaries.PickBirthDate import PickBirthDate
+from Manipulations.Actions.CheckSlotScenaries.PickCitizenship import PickCitizenship
 
-class MinskShenghenCOtherScenario:
+
+class LidaShenghenDPostalScenario:
 
     def __init__(self):
         self.logger = Logger()
@@ -21,13 +16,13 @@ class MinskShenghenCOtherScenario:
         # ---------------------   choose center   -------------------------------
         # -----------------------------------------------------------------------
         center = PickCenter()
-        center.process('Images\\minsk_center.PNG')
+        center.process('Images\\center_lida.PNG')
 
         # -----------------------------------------------------------------------
         # ---------------------   choose category -------------------------------
         # -----------------------------------------------------------------------
         category = PickCategory()
-        category.process('Images\\category_visa_c.PNG')
+        category.process('Images\\category_visa_d.PNG')
 
         # -----------------------------------------------------------------------
         # ---------------------   choose birthdate ------------------------------
@@ -45,7 +40,7 @@ class MinskShenghenCOtherScenario:
         # ---------------------   choose subcategory ----------------------------
         # -----------------------------------------------------------------------
         subcategory = PickSubCategory()
-        subcategory.process('Images\\subcategory_visa_other_c.PNG')
+        subcategory.process('Images\\subcategory_visa_postal_d.PNG')
 
 
 

@@ -1,18 +1,11 @@
-import pyautogui
-import time
-import random
-import winsound
-from Settings.Options import *
-from Settings.Credentials import credentials
-from Logger import Logger
-from CheckSlotScenaries.PickCenter import PickCenter
-from CheckSlotScenaries.PickCategory import PickCategory
-from CheckSlotScenaries.PickSubCategory import PickSubCategory
-from CheckSlotScenaries.PickBirthDate import PickBirthDate
-from CheckSlotScenaries.PickCitizenship import PickCitizenship
+from Manipulations.Logger.Logger import Logger
+from Manipulations.Actions.CheckSlotScenaries.PickCenter import PickCenter
+from Manipulations.Actions.CheckSlotScenaries.PickCategory import PickCategory
+from Manipulations.Actions.CheckSlotScenaries.PickSubCategory import PickSubCategory
+from Manipulations.Actions.CheckSlotScenaries.PickBirthDate import PickBirthDate
+from Manipulations.Actions.CheckSlotScenaries.PickCitizenship import PickCitizenship
 
-
-class MinskShenghenDPostalScenario:
+class MinskShenghenCOtherScenario:
 
     def __init__(self):
         self.logger = Logger()
@@ -28,7 +21,7 @@ class MinskShenghenDPostalScenario:
         # ---------------------   choose category -------------------------------
         # -----------------------------------------------------------------------
         category = PickCategory()
-        category.process('Images\\category_visa_d.PNG')
+        category.process('Images\\category_visa_c.PNG')
 
         # -----------------------------------------------------------------------
         # ---------------------   choose birthdate ------------------------------
@@ -46,7 +39,7 @@ class MinskShenghenDPostalScenario:
         # ---------------------   choose subcategory ----------------------------
         # -----------------------------------------------------------------------
         subcategory = PickSubCategory()
-        subcategory.process('Images\\subcategory_visa_postal_d.PNG')
+        subcategory.process('Images\\subcategory_visa_other_c.PNG')
 
 
 
